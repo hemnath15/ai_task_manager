@@ -8,7 +8,7 @@ export interface LoginPayload {
 export interface SignupPayload extends LoginPayload {
   name: string;
 }
-
+// for prod
 export const loginAPI = (data: LoginPayload) =>
   api.post("api/auth/login", data);
 
