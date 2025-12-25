@@ -60,7 +60,7 @@
 .task-form-column input:focus,
 .task-form-column select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #ff4b2b;
 }
 
 /* Button row */
@@ -71,7 +71,7 @@
 }
 
 .form-actions button {
-  background: #2563eb;
+  background: #ff4b2b ;
   color: white;
   padding: 12px 22px;
   border-radius: 10px;
@@ -82,5 +82,5 @@
 }
 
 .form-actions button:hover {
-  background: #1d4ed8;
+  background:#1d4ed8;
 }

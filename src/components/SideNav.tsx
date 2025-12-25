@@ -52,9 +52,9 @@ const SideNav = () => {
             <p>Are you sure you want to logout?</p>
 
             <div className="logout-actions">
-              <button onClick={logout}>Yes</button>
+              <button className="logout-btn" onClick={logout}>Yes</button>
               <button
-                className="danger"
+                className="cancel-btn"
                 onClick={() => setShowLogout(false)}
               >
                 Cancel
