@@ -9,7 +9,7 @@ export interface Task {
   status: "pending" | "completed";
 }
 
-export const fetchTasksAPI = () => api.get<Task[]>("/tasks");
+export const fetchTasksAPI = () => api.get<Task[]>("api/tasks");
 
 export const createTaskAPI = (task: Partial<Task>) =>
   api.post("api/tasks", task);
