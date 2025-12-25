@@ -80,7 +80,7 @@ const fetchAIInsights = async () => {
     <div className="dashboard">
       {/* Header */}
       <div className="dashboard-header">
-        <div>
+        <div className="header">
           <h2>Track your Tasks</h2>
         </div>
         <span className="date">{new Date().toDateString()}</span>
@@ -98,7 +98,7 @@ const fetchAIInsights = async () => {
       {/* Content */}
       <div className="dashboard-content">
         {/* Progress */}
-        <div className="card ai-card">
+        <div className="ai-card">
           {/* AI Insights */}
   <h4>AI Task Insights</h4>
 

@@ -13,4 +13,4 @@ export const loginAPI = (data: LoginPayload) =>
   api.post("/auth/login", data);
 
 export const signupAPI = (data: SignupPayload) =>
-  api.post("/auth/signup", data);
+  api.post("/auth/register", data);

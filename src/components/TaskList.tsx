@@ -13,6 +13,30 @@ const TaskList = ({
   tasks: Task[];
   refresh: () => void;
 }) => {
+  const [viewTask, setViewTask] = useState<Task | null>(null);
+const [editTask, setEditTask] = useState<Task | null>(null);
+
+const [editTitle, setEditTitle] = useState("");
+const [editPriority, setEditPriority] = useState<"low" | "medium" | "high">("low");
+
+const openEdit = (task: Task) => {
+  setEditTask(task);
+  setEditTitle(task.title);
+  setEditPriority(task.priority);
+};
+
+const saveEdit = async () => {
+  if (!editTask) return;
+
+  await updateTaskAPI(editTask._id, {
+    title: editTitle,
+    priority: editPriority,
+  });
+
+  setEditTask(null);
+  refresh();
+};
+
   const [search, setSearch] = useState("");
   const [status, setStatus] =
     useState<"ALL" | "pending" | "completed">("ALL");
@@ -64,6 +88,7 @@ const TaskList = ({
             <th>Title</th>
             <th>Priority</th>
             <th>Status</th>
+            <th>Due Date</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -84,8 +109,19 @@ const TaskList = ({
                   {t.status.toUpperCase()}
                 </span>
               </td>
-
+<td>
+  {t.dueDate
+    ? new Date(t.dueDate).toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : "-"}
+</td>
               <td className="actions">
+                  <button onClick={() => setViewTask(t)}>View</button>
+
+  <button onClick={() => openEdit(t)}>Edit</button>
                 <button onClick={() => toggleStatus(t)}>
                   {t.status === "pending"
                     ? "Mark Completed"
@@ -114,6 +150,49 @@ const TaskList = ({
           )}
         </tbody>
       </table>
+      {viewTask && (
+  <div className="modal-backdrop">
+    <div className="modal">
+      <h3>View Task</h3>
+      <p><strong>Title:</strong> {viewTask.title}</p>
+      <p><strong>Priority:</strong> {viewTask.priority}</p>
+      <p><strong>Status:</strong> {viewTask.status}</p>
+
+      <button onClick={() => setViewTask(null)}>Close</button>
+    </div>
+  </div>
+)}
+{editTask && (
+  <div className="modal-backdrop">
+    <div className="modal">
+      <h3>Edit Task</h3>
+
+      <input
+        value={editTitle}
+        onChange={(e) => setEditTitle(e.target.value)}
+        placeholder="Task title"
+      />
+
+      <select
+        value={editPriority}
+        onChange={(e) =>
+          setEditPriority(e.target.value as "low" | "medium" | "high")
+        }
+      >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <div className="modal-actions">
+        <button onClick={saveEdit}>Save</button>
+        <button className="danger" onClick={() => setEditTask(null)}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 };

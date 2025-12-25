@@ -7,7 +7,7 @@ type Props = {
 const AIInsightsCard = ({ insights, loading }: Props) => {
   return (
     <div className="ai-card">
-      <h3>🤖 AI Task Insights</h3>
+      <h3>AI Task Insights</h3>
 
       {loading ? (
         <p>Analyzing your tasks...</p>

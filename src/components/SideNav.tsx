@@ -1,8 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../styles/sidenav.css";
 
 const SideNav = () => {
   const navigate = useNavigate();
+  const [showLogout, setShowLogout] = useState(false);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -21,15 +23,46 @@ const SideNav = () => {
         <NavLink to="/tasks" className="nav-item">
           Tasks
         </NavLink>
-
-        <NavLink to="/profile" className="nav-item">
-          Profile
-        </NavLink>
       </nav>
 
-      <button className="logout-btn" onClick={logout}>
-        Logout
-      </button>
+      {/* Profile section at bottom */}
+      <div className="profile-section">
+        <div className="profile-info">
+          <div className="avatar">H</div>
+          <div>
+            <p className="name">Hemnath</p>
+            <span className="role">User</span>
+          </div>
+          <button
+          className="logout-btn"
+          onClick={() => setShowLogout(true)}
+        >
+          Logout
+        </button>
+        </div>
+
+        
+      </div>
+
+      {/* Logout Confirmation */}
+      {showLogout && (
+        <div className="logout-backdrop">
+          <div className="logout-modal">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+
+            <div className="logout-actions">
+              <button onClick={logout}>Yes</button>
+              <button
+                className="danger"
+                onClick={() => setShowLogout(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </aside>
   );
 };

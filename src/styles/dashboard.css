@@ -1,5 +1,5 @@
 .dashboard {
-  padding: 24px;
+  /* padding: 24px; */
   background: #f8fafc;
   min-height: 100vh;
 }
@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+   color: #dc2626;
 }
 
 .dashboard-header h2 {
@@ -160,8 +161,12 @@
   }
 }
 .ai-card {
-  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  height: 30%;
+  background:#ff4b2b;
   color: #ffffff;
+   border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .ai-card p {
