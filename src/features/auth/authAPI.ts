@@ -10,7 +10,7 @@ export interface SignupPayload extends LoginPayload {
 }
 
 export const loginAPI = (data: LoginPayload) =>
-  api.post("/auth/login", data);
+  api.post("api/auth/login", data);
 
 export const signupAPI = (data: SignupPayload) =>
-  api.post("/auth/register", data);
+  api.post("api/auth/register", data);
