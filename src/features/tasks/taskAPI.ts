@@ -12,10 +12,10 @@ export interface Task {
 export const fetchTasksAPI = () => api.get<Task[]>("/tasks");
 
 export const createTaskAPI = (task: Partial<Task>) =>
-  api.post("/tasks", task);
+  api.post("api/tasks", task);
 
 export const updateTaskAPI = (id: string, task: Partial<Task>) =>
-  api.put(`/tasks/${id}`, task);
+  api.put(`api/tasks/${id}`, task);
 
 export const deleteTaskAPI = (id: string) =>
-  api.delete(`/tasks/${id}`);
+  api.delete(`api/tasks/${id}`);
