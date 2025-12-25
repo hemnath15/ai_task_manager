@@ -1,0 +1,166 @@
+.task-table-container {
+  margin-top: 16px;
+}
+
+.task-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.task-filters input,
+.task-filters select {
+  padding: 8px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th,
+.task-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.status.completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.pending {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actions button {
+  margin-right: 8px;
+}
+
+.actions .danger {
+  color: red;
+}
+/* Page spacing */
+.task-table-container {
+  margin-top: 20px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* Filters */
+.task-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.task-filters input,
+.task-filters select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Table */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.task-table thead {
+  background: #f9fafb;
+}
+
+.task-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.task-table td {
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.task-table tr:hover {
+  background: #f9fafb;
+}
+
+/* Status badge */
+.status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.pending {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Actions */
+.actions button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.actions button:hover {
+  background: #f3f4f6;
+}
+
+.actions .danger {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.actions .danger:hover {
+  background: #fee2e2;
+}
+
+/* Add button */
+.add-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Top bar alignment */
+.task-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}

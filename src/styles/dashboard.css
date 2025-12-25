@@ -1,0 +1,170 @@
+.dashboard {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+}
+
+.dashboard-header p {
+  color: #64748b;
+}
+
+.date {
+  color: #64748b;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  padding: 20px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.trend {
+  color: #16a34a;
+  font-size: 14px;
+}
+
+/* Colors */
+.purple { background: #eef2ff; }
+.green { background: #ecfdf5; }
+.yellow { background: #fff7ed; }
+.blue { background: #ecfeff; }
+
+/* Content */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px;
+}
+
+.card {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Progress */
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 10px solid #e5e7eb;
+  border-top-color: #6366f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto;
+}
+
+.progress-circle span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar div {
+  height: 100%;
+  background: #6366f1;
+}
+
+.progress-text {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Tasks */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.task .title {
+  font-weight: 500;
+}
+
+.task span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.badge.high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.badge.medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
+.ai-card {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #ffffff;
+}
+
+.ai-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}

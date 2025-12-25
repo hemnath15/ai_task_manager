@@ -1,0 +1,8 @@
+.ai-card {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  min-height: 160px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
