@@ -20,7 +20,7 @@ const [aiLoading, setAiLoading] = useState(true);
 const fetchAIInsights = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/insights",
+      "https://ai-task-manager-backend-clean.onrender.com/api/insights",
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -44,7 +44,7 @@ const fetchAIInsights = async () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks", {
+      const res = await axios.get("https://ai-task-manager-backend-clean.onrender.com/api/tasks", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
