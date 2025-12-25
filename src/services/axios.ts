@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "../app/store";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL:"https://ai-task-manager-backend-clean.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
