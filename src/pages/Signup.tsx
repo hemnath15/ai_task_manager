@@ -8,20 +8,27 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  const signup = async () => {
+  const [error, setError] = useState("");
+  const signup = async (e:any) => {
+     e.preventDefault();
+      setError("");
+  
+      if (!email || !password) {
+        setError("Email and password required");
+        return;
+      }
     await signupAPI({ name, email, password });
     navigate("/login");
   };
 
   return (
-    <div className="auth-wrapper">
-      <div className="auth-card">
+    <div className="login-wrapper">
+      <div className="login-card">
         
         {/* LEFT SIDE */}
-        <div className="auth-left">
+        <div className="login-left">
           <h2>Create Account</h2>
-
+          {error && <p className="error-text">{error}</p>}
           <input
             placeholder="Name"
             onChange={(e) => setName(e.target.value)}
@@ -46,7 +53,7 @@ const Signup = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="auth-right">
+        <div className="login-right">
           <h2>Hello, Friend!</h2>
           <p>Enter your personal details and start journey with us</p>
           <Link to="/login">

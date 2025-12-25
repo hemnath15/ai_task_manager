@@ -36,11 +36,11 @@ const Login = () => {
     }
   };
 return (
-  <div className="auth-wrapper">
-    <div className="auth-card">
+  <div className="login-wrapper">
+    <div className="login-card">
 
-      {/* LEFT SIDE – LOGIN FORM (SAME AS SIGNUP) */}
-      <div className="auth-left">
+      {/* LEFT SIDE – LOGIN FORM */}
+      <div className="login-left">
         <h2>Sign In</h2>
 
         {error && <p className="error-text">{error}</p>}
@@ -72,7 +72,7 @@ return (
       </div>
 
       {/* RIGHT SIDE – SAME PANEL */}
-      <div className="auth-right">
+      <div className="login-right">
         <h2>Hello, Friend!</h2>
         <p>Enter your personal details and start journey with us</p>
         <Link to="/signup">

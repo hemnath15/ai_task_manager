@@ -1,5 +1,5 @@
 /* PAGE BACKGROUND */
-.auth-wrapper {
+.login-wrapper {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 /* MAIN CARD */
-.auth-card {
+.login-card {
   width: 800px;
   height: 420px;
   background: white;
@@ -19,7 +19,7 @@
 }
 
 /* LEFT SIDE */
-.auth-left {
+.login-left {
   flex: 1;
   padding: 40px;
   display: flex;
@@ -28,12 +28,12 @@
   gap: 12px;
 }
 
-.auth-left h2 {
+.login-left h2 {
   text-align: center;
   margin-bottom: 10px;
 }
 
-.auth-left input {
+.login-left input {
   padding: 12px;
   border-radius: 6px;
   border: none;
@@ -41,7 +41,7 @@
   font-size: 14px;
 }
 
-.auth-left button {
+.login-left button {
   margin-top: 10px;
   padding: 12px;
   border-radius: 20px;
@@ -58,7 +58,7 @@
 }
 
 /* RIGHT SIDE */
-.auth-right {
+.login-right {
   flex: 1;
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
   color: white;
@@ -70,11 +70,11 @@
   text-align: center;
 }
 
-.auth-right h2 {
+.login-right h2 {
   font-size: 28px;
 }
 
-.auth-right p {
+.login-right p {
   margin: 20px 0;
   font-size: 14px;
 }
@@ -91,13 +91,13 @@
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .auth-card {
+  .login-card {
     flex-direction: column;
     width: 90%;
     height: auto;
   }
 
-  .auth-right {
+  .login-right {
     display: none;
   }
 }
