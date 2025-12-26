@@ -18,11 +18,16 @@ const [editTask, setEditTask] = useState<Task | null>(null);
 
 const [editTitle, setEditTitle] = useState("");
 const [editPriority, setEditPriority] = useState<"low" | "medium" | "high">("low");
-
+const [editDueDate, setEditDueDate] = useState("");
 const openEdit = (task: Task) => {
   setEditTask(task);
   setEditTitle(task.title);
   setEditPriority(task.priority);
+  setEditDueDate(
+      task.dueDate
+        ? task.dueDate.split("T")[0]
+        : ""
+    );
 };
 
 const saveEdit = async () => {
@@ -31,6 +36,7 @@ const saveEdit = async () => {
   await updateTaskAPI(editTask._id, {
     title: editTitle,
     priority: editPriority,
+    dueDate: editDueDate,
   });
 
   setEditTask(null);
@@ -51,13 +57,19 @@ const saveEdit = async () => {
 
     return matchSearch && matchStatus;
   });
+const [loadingTaskId, setLoadingTaskId] = useState<string | null>(null)
+const toggleStatus = async (task: Task) => {
+  setLoadingTaskId(task._id);
 
-  const toggleStatus = async (task: Task) => {
+  try {
     await updateTaskAPI(task._id, {
       status: task.status === "pending" ? "completed" : "pending",
     });
-    refresh();
-  };
+    await refresh();
+  } finally {
+    setLoadingTaskId(null);
+  }
+};
 
   return (
     <div className="task-table-container">
@@ -122,11 +134,19 @@ const saveEdit = async () => {
                   <button onClick={() => setViewTask(t)}>View</button>
 
   <button onClick={() => openEdit(t)}>Edit</button>
-                <button onClick={() => toggleStatus(t)}>
-                  {t.status === "pending"
-                    ? "Mark Completed"
-                    : "Mark Pending"}
-                </button>
+                <button
+  className="status-btn"
+  onClick={() => toggleStatus(t)}
+  disabled={loadingTaskId === t._id}
+>
+  {loadingTaskId === t._id ? (
+    <span className="spinner" />
+  ) : t.status === "pending" ? (
+    "Mark Completed"
+  ) : (
+    "Mark Pending"
+  )}
+</button>
 
                 <button
                   className="danger"
@@ -150,42 +170,92 @@ const saveEdit = async () => {
           )}
         </tbody>
       </table>
-      {viewTask && (
-  <div className="modal-backdrop">
-    <div className="modal">
+    {viewTask && (
+  <div className="view-backdrop">
+    <div className="view">
       <h3>View Task</h3>
+
       <p><strong>Title:</strong> {viewTask.title}</p>
-      <p><strong>Priority:</strong> {viewTask.priority}</p>
-      <p><strong>Status:</strong> {viewTask.status}</p>
+
+      {/* Priority + Status Row */}
+      <div className="meta-row">
+        <div>
+          <span className="label">Priority</span>
+          <span className={`badge ${viewTask.priority}`}>
+            {viewTask.priority}
+          </span>
+        </div>
+         <div>
+          <span className="label">dueDate</span>
+          <span className={`badge ${viewTask.priority}`}>
+            {viewTask.dueDate}
+          </span>
+         </div>
+        <div>
+          <span className="label">Status</span>
+          <span className={`badge ${viewTask.status}`}>
+            {viewTask.status}
+          </span>
+        </div>
+      </div>
+
+      {/* Description Box */}
+      <div className="description-box">
+        <span className="label">Description</span>
+        <p>{viewTask.description || "No description provided"}</p>
+      </div>
 
       <button onClick={() => setViewTask(null)}>Close</button>
     </div>
   </div>
 )}
+
 {editTask && (
-  <div className="modal-backdrop">
-    <div className="modal">
+  <div className="edit-backdrop">
+    <div className="edit">
       <h3>Edit Task</h3>
 
-      <input
-        value={editTitle}
-        onChange={(e) => setEditTitle(e.target.value)}
-        placeholder="Task title"
-      />
+      {/* Title */}
+      <div className="form-group">
+        <label>Title</label>
+        <input
+          value={editTitle}
+          onChange={(e) => setEditTitle(e.target.value)}
+          placeholder="Task title"
+        />
+      </div>
 
-      <select
-        value={editPriority}
-        onChange={(e) =>
-          setEditPriority(e.target.value as "low" | "medium" | "high")
-        }
-      >
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
+      {/* Priority + Due Date */}
+      <div className="form-row">
+        <div className="form-group">
+          <label>Priority</label>
+          <select
+            value={editPriority}
+            onChange={(e) =>
+              setEditPriority(e.target.value as "low" | "medium" | "high")
+            }
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
 
-      <div className="modal-actions">
-        <button onClick={saveEdit}>Save</button>
+        <div className="form-group">
+          <label>Due Date</label>
+          <input
+            type="date"
+            value={editDueDate}
+            onChange={(e) => setEditDueDate(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="edit-actions">
+        <button className="primary" onClick={saveEdit}>
+          Save Changes
+        </button>
         <button className="danger" onClick={() => setEditTask(null)}>
           Cancel
         </button>
@@ -193,6 +263,7 @@ const saveEdit = async () => {
     </div>
   </div>
 )}
+
     </div>
   );
 };
